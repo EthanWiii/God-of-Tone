@@ -1,0 +1,30 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# Copied from node_modules by the alphaTab Vite plugin on every run
+public/font/
+public/soundfont/
+
+# Practice recordings (keep your takes out of the repo)
+takes/
+*.mp4
+*.mov
+*.webm
+*.wav
+*.m4a
+*.mp3
+
+# Secrets (e.g. a future AI-coach API key)
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS / local tool config
+.DS_Store
+.vscode/
+.idea/
+.claude/

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guitar Practice</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="toolbar">
+    <div class="group">
+      <span class="brand">Guitar Practice</span>
+    </div>
+
+    <div class="group">
+      <label class="button">
+        Import tab
+        <input id="tab-file" type="file" accept=".gp,.gpx,.gp3,.gp4,.gp5,.gtp,.xml,.musicxml" hidden />
+      </label>
+      <select id="track-select" title="Track to practice" disabled>
+        <option>No tab loaded</option>
+      </select>
+      <button id="tab-play" disabled>▶ Play tab</button>
+    </div>
+
+    <div class="group">
+      <label class="check">Bars
+        <input id="bar-from" type="number" min="1" value="1" class="num" />–<input id="bar-to" type="number" min="1" value="1" class="num" />
+      </label>
+      <select id="speed-select" title="Practice speed">
+        <option value="0.5">50%</option>
+        <option value="0.6">60%</option>
+        <option value="0.7">70%</option>
+        <option value="0.8">80%</option>
+        <option value="0.9">90%</option>
+        <option value="1" selected>100%</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <select id="camera-select" title="Camera"></select>
+      <select id="audio-select" title="Audio input"></select>
+      <select id="channel-select" title="Which input channel carries the guitar">
+        <option value="mix">Mix L+R</option>
+        <option value="left">Input 1 (L)</option>
+        <option value="right">Input 2 (R)</option>
+      </select>
+      <label class="check"><input id="video-toggle" type="checkbox" checked /> Video</label>
+      <label class="check"><input id="countin-toggle" type="checkbox" checked /> Count-in</label>
+    </div>
+
+    <div class="group">
+      <button id="record-btn" class="record" disabled>● Record</button>
+      <label class="button">
+        Import recording
+        <input id="recording-file" type="file" accept="audio/*,video/*" hidden />
+      </label>
+      <button id="folder-btn" title="Where saved takes go">Save folder…</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="tab-pane">
+      <div id="tab-placeholder" class="placeholder">
+        Import a Guitar Pro file (.gpx from Guitar Pro 6, or .gp3/.gp4/.gp5/.gp) to start.
+      </div>
+      <div id="alphatab"></div>
+    </section>
+
+    <aside class="side-pane">
+      <div class="preview">
+        <video id="camera-preview" autoplay muted playsinline></video>
+        <div id="countin-overlay" class="countin" hidden></div>
+        <div id="rec-indicator" class="rec-indicator" hidden>● REC <span id="rec-time">0:00</span></div>
+      </div>
+
+      <div id="current-score" class="score-card">
+        <div class="score-label">Current take</div>
+        <div class="score-value">—</div>
+        <div class="score-details"></div>
+      </div>
+
+      <h3>Takes</h3>
+      <ul id="take-list" class="take-list"></ul>
+    </aside>
+  </main>
+
+  <section class="details">
+    <div>
+      <h3>Tempo by bar</h3>
+      <div id="bar-tempo" class="bar-tempo"></div>
+    </div>
+    <div>
+      <h3>Coach notes</h3>
+      <ul id="coach-notes" class="coach-notes"></ul>
+    </div>
+  </section>
+
+  <footer class="hint">
+    Shortcuts (foot-pedal friendly): <kbd>Space</kbd>/<kbd>PageDown</kbd> record / stop ·
+    <kbd>S</kbd>/<kbd>PageUp</kbd> save the latest take
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
